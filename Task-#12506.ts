@@ -14,7 +14,7 @@ function replaceKeysAndConvertStrings<T extends NestedValue>(input: T): T {
         
         const value = input[key];
 
-        // Update the key if it includes "id"
+    
         const newKey = key.includes("id") ? key.replace(/id/g, "identifier") : key;
 
         transformedObject[newKey] = replaceKeysAndConvertStrings(value);
@@ -26,7 +26,6 @@ function replaceKeysAndConvertStrings<T extends NestedValue>(input: T): T {
     
   }
 
-  // If the input is a string, convert it to uppercase
   if (typeof input === "string") {
     return input.toUpperCase() as T;
   }
@@ -34,7 +33,7 @@ function replaceKeysAndConvertStrings<T extends NestedValue>(input: T): T {
   return input;
 }
 
-// Example input to test the function
+
 const exampleData = {
   userId: "john_doe",
   details: {
@@ -55,10 +54,9 @@ const exampleData = {
   ],
 };
 
-// Apply the function to transform the example data
+
 const result = replaceKeysAndConvertStrings(exampleData);
 
-// Output the transformed result
 console.log(result);
 
 
